@@ -4,7 +4,12 @@ All notable changes to the "pug" extension will be documented in this file.
 
 ## [Unreleased]
 
-- LSP support
+- LSP support - paused
+
+## [0.1.1] - 2023-01-09
+
+### Added
+- Web Extension Support.
 
 ## [0.1.0] - 2023-01-06
 
