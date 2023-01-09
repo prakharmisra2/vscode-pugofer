@@ -114,7 +114,7 @@
     "package-web": "webpack --mode production --devtool hidden-source-map",
     "run-in-browser": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. .",
     "package": "vsce package",
-    "publish": "vsce publish -p"
+    "publish": "vsce publish -p $VSCE_PAT"
   },
   "devDependencies": {
     "@types/glob": "^8.0.0",
