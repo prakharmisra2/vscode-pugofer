@@ -68,8 +68,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: ubuntu-latest
-      - name: Publish
-        if: success() && matrix.os == 'ubuntu-latest'
+      - name: Publish Extension
         run: npm run publish
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
