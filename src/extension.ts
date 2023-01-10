@@ -5,6 +5,7 @@ import * as vscode from 'vscode';
 import { downloadPug, getLatestVersion } from './download';
 import { getPreludePath, getPugPath, readVersionFile } from './utilities';
 let extensionContext: vscode.ExtensionContext;
+let pugChannel: vscode.OutputChannel;
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -12,6 +13,8 @@ export function activate(context: vscode.ExtensionContext) {
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "pug" is now active!');
+	// Create a new channel for pug related logging
+	pugChannel = vscode.window.createOutputChannel('Pug says');
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
@@ -27,8 +30,10 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	const version = readVersionFile(context.extensionPath);
+	pugChannel.appendLine(`Pug version: ${version}`);
 	// If version is empty string, then download the latest version
 	if (version === '') {
+		pugChannel.appendLine('Pug version file not found. Downloading latest version.');
 		downloadPugCommand();
 	}
 	context.subscriptions.push( disposable2, disposable3);
@@ -78,6 +83,7 @@ async function downloadPugCommand() {
 	const version = await getLatestVersion();
 	await downloadPug(extensionContext.extensionPath, version);
 	void vscode.window.showInformationMessage(`Downloaded pug version: ${version}`);
+	pugChannel.appendLine(`Downloaded pug version: ${version}`);
 }
 
 // 
