@@ -58,6 +58,7 @@
         "id": "pug-standard",
         "extensions": [
           ".gs",
+          ".lgs",
           ".pug"
         ],
         "when": "config.pug.prelude-type == 'standard'",
@@ -67,6 +68,7 @@
         "id": "pug-simple",
         "extensions": [
           ".gs",
+          ".lgs",
           ".pug"
         ],
         "when": "config.pug.prelude-type == 'simple'",

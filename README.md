@@ -6,7 +6,7 @@ This extension adds support for running PUgofer (pug)scripts in Visual Studio Co
 
 * Install pug
 * Run pug scripts
-* Syntax highlighting- yet to be implemented
+* Syntax highlighting
 ## Requirements
 
 If you have any requirements or dependencies, add a section describing those and how to install and configure them.
