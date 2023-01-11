@@ -17,6 +17,7 @@ async function fetchFromUrl(fullUrl: string): Promise<string> {
             host: q.hostname,
             path: q.pathname,
             port: q.port,
+            // eslint-disable-next-line @typescript-eslint/naming-convention
             headers: { 'user-agent': 'node.js' },
           },
           (res) => {

@@ -20,7 +20,7 @@ const artifacts = {
 const preludes = {
   simple: 'pusimple.pre',
   standard: 'pustd.pre',
-}
+};
 
 function getArtifactDownloadName(
   platform: string = process.platform,

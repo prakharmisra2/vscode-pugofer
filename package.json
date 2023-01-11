@@ -5,6 +5,11 @@
   "version": "0.1.2",
   "icon": "images/pug-logo.png",
   "publisher": "saukap",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saukap/vscode-pugofer"
+  },
+  "license": "MIT",
   "engines": {
     "vscode": "^1.74.0"
   },
