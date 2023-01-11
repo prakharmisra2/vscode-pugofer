@@ -65,11 +65,11 @@ function loadCurrentFile() {
 // This method is called when your extension is deactivated
 export function deactivate() {}
 
-function createTerminal(name: string, filePath: string): vscode.Terminal {
-	const terminal = vscode.window.createTerminal(name);
+function createTerminal(language: string, filePath: string): vscode.Terminal {
+	const terminal = vscode.window.createTerminal(language);
 	const pugPath = getPugPath(extensionContext.extensionPath);
-	// extract prelude type from the `name` of the terminal
-	const preludeType = name.split('-')[1];
+	// extract prelude type from the `language`
+	const preludeType = language.split('-')[1];
 	const preludePath = getPreludePath(extensionContext.extensionPath, preludeType);
 	// create command for windows and linux
 	const command = process.platform === 'win32' ? `$env:PUGOFER='${preludePath}'; ${pugPath}` :

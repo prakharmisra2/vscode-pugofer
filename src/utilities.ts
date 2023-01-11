@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as process from 'process';
 
+// The code here is based on the code from the calva extension
 const versionFileName = 'pug-version.txt';
 
 const artifacts = {

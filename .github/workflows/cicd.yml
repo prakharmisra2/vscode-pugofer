@@ -71,4 +71,4 @@ jobs:
       - name: Publish Extension
         run: npm run publish
         env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+          VSCE_PAT: ${{ secrets.VS_MARKETPLACE_TOKEN }}

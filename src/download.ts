@@ -5,6 +5,9 @@ import * as url from 'url';
 import { https } from 'follow-redirects';
 import * as extractZip from 'extract-zip';
 
+
+// The code here is based on the code from the calva extension
+
 async function fetchFromUrl(fullUrl: string): Promise<string> {
     const q = url.parse(fullUrl);
     return new Promise((resolve, reject) => {
