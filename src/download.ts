@@ -39,7 +39,7 @@ async function fetchFromUrl(fullUrl: string): Promise<string> {
 async function getLatestVersion(): Promise<string> {
   try {
     const releasesJSON = await fetchFromUrl(
-      'https://api.github.com/repos/saukap/gofer/releases'
+      'https://api.github.com/repos/saukap/pugofer/releases'
     );
     const releases = JSON.parse(releasesJSON);
     return releases[0].tag_name;
@@ -105,7 +105,7 @@ async function unzipFile(zipFilePath: string, extensionPath: string): Promise<vo
 
 async function downloadPug(extensionPath: string, version: string): Promise<string> {
   const artifactName = util.getArtifactDownloadName(process.platform, process.arch);
-  const url = `https://github.com/saukap/gofer/releases/download/${version}/${artifactName}`;
+  const url = `https://github.com/saukap/pugofer/releases/download/${version}/${artifactName}`;
   const downloadPath = path.join(extensionPath, artifactName);
   const pugPath = util.getPugPath(extensionPath);
   const backupPath = fs.existsSync(pugPath)

@@ -33,7 +33,7 @@ function getPugPath(
   extensionPath: string,
   platform: string = process.platform
 ): string {
-  const name = platform === 'win32' ? 'gofer.exe' : 'gofer';
+  const name = platform === 'win32' ? 'pug.exe' : 'pug';
  
   return path.join(extensionPath, name);
 }

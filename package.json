@@ -2,7 +2,7 @@
   "name": "pugofer",
   "displayName": "Pug (PUGofer)",
   "description": "Pug PUGofer Language Support",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "icon": "images/pug-logo.png",
   "publisher": "saukap",
   "repository": {

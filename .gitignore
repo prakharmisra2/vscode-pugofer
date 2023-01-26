@@ -7,6 +7,7 @@ node_modules
 
 # gofer binaries
 gofer.exe
+pug.exe
 *.zip
 *.pre
 pug-version.txt
