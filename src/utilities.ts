@@ -8,6 +8,7 @@ const versionFileName = 'pug-version.txt';
 const artifacts = {
   darwin: {
     x64: 'pug_macos.zip',
+    arm64: 'pug_macos.zip',
   },
   linux: {
     x64: 'pug_linux.zip',
@@ -34,7 +35,7 @@ function getPugPath(
   platform: string = process.platform
 ): string {
   const name = platform === 'win32' ? 'pug.exe' : 'pug';
- 
+
   return path.join(extensionPath, name);
 }
 
@@ -42,7 +43,7 @@ function getPreludePath(
   extensionPath: string,
   prelude: string = 'simple'
 ) :string {
-  
+
   return path.join(extensionPath, preludes[prelude]);
 }
 
