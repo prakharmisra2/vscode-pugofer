@@ -28,6 +28,11 @@ export function activate(context: vscode.ExtensionContext) {
 	let disposable3 = vscode.commands.registerCommand('pug.downloadBinary', async () => {
 		await downloadPugCommand();
 	});
+	// Create command to Run pug-simple direct on terminal 
+	let disposable1 = vscode.commands.registerCommand('pug.runSimple',()=>{
+		runSimple("pug-simple");
+	});
+
 
 	const version = readVersionFile(context.extensionPath);
 	pugChannel.appendLine(`Pug version: ${version}`);
@@ -36,7 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
 		pugChannel.appendLine('Pug version file not found. Downloading latest version.');
 		downloadPugCommand();
 	}
-	context.subscriptions.push( disposable2, disposable3);
+	context.subscriptions.push( disposable1, disposable2, disposable3);
 	extensionContext = context; //TODO: remove this global variable 
 }
 
@@ -65,7 +70,7 @@ function loadCurrentFile() {
 // This method is called when your extension is deactivated
 export function deactivate() {}
 
-function createTerminal(language: string, filePath: string): vscode.Terminal {
+function createTerminal(language: string, filePath: string = ""): vscode.Terminal {
 	const terminal = vscode.window.createTerminal(language);
 	const pugPath = getPugPath(extensionContext.extensionPath);
 	// extract prelude type from the `language`
@@ -79,6 +84,24 @@ function createTerminal(language: string, filePath: string): vscode.Terminal {
 	return terminal;
 }
 
+function runSimple(pugLanguage: string){
+	
+	
+	var terminal = vscode.window.terminals.find(terminal => terminal.name === pugLanguage);
+	// Create a new terminal and run gofer
+	// const terminal = vscode.window.createTerminal('pug');
+	 
+	if (!terminal) {
+		terminal = createTerminal(pugLanguage);
+	}
+	else {
+		terminal.sendText(`:l`);
+	}
+	terminal.show(); 
+}
+
+
+
 async function downloadPugCommand() {
 	const version = await getLatestVersion();
 	await downloadPug(extensionContext.extensionPath, version);
@@ -86,4 +109,4 @@ async function downloadPugCommand() {
 	pugChannel.appendLine(`Downloaded pug version: ${version}`);
 }
 
-// 
+//

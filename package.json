@@ -29,6 +29,10 @@
       {
         "command": "pug.downloadBinary",
         "title": "pug: Download Binary"
+      },
+      {
+        "command": "pug.runSimple",
+        "title": "pug: Simple Run Pug"
       }
     ],
     "grammars": [
