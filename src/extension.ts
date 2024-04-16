@@ -30,7 +30,11 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 	// Create command to Run pug-simple direct on terminal 
 	let disposable1 = vscode.commands.registerCommand('pug.runSimple',()=>{
-		runSimple("pug-simple");
+		runPrelude("pug-simple");
+	});
+	// Create command to Run pug-standard direct on terminal
+	let disposable4 = vscode.commands.registerCommand('pug.runStandard',() =>{
+		runPrelude("pug-standard");
 	});
 
 
@@ -84,23 +88,20 @@ function createTerminal(language: string, filePath: string = ""): vscode.Termina
 	return terminal;
 }
 
-function runSimple(pugLanguage: string){
-	
-	
+function runPrelude(pugLanguage: string){
+	//checking if terminal already open for prelude.
 	var terminal = vscode.window.terminals.find(terminal => terminal.name === pugLanguage);
 	// Create a new terminal and run gofer
 	// const terminal = vscode.window.createTerminal('pug');
-	 
+	
 	if (!terminal) {
 		terminal = createTerminal(pugLanguage);
 	}
 	else {
-		terminal.sendText(`:l`);
+		terminal.sendText(`:1`);
 	}
 	terminal.show(); 
 }
-
-
 
 async function downloadPugCommand() {
 	const version = await getLatestVersion();

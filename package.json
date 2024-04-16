@@ -32,7 +32,11 @@
       },
       {
         "command": "pug.runSimple",
-        "title": "pug: Simple Run Pug"
+        "title": "pug: Run pug-simple"
+      },
+      {
+        "command": "pug.runStandard",
+        "title": "pug: Run pug-standard"
       }
     ],
     "grammars": [
