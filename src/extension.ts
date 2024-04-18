@@ -30,11 +30,11 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 	// Create command to Run pug-simple direct on terminal 
 	let disposable1 = vscode.commands.registerCommand('pug.runSimple',()=>{
-		runPrelude("pug-simple");
+		runPugInTerminal("pug-simple");
 	});
 	// Create command to Run pug-standard direct on terminal
 	let disposable4 = vscode.commands.registerCommand('pug.runStandard',() =>{
-		runPrelude("pug-standard");
+		runPugInTerminal("pug-standard");
 	});
 
 
@@ -45,7 +45,7 @@ export function activate(context: vscode.ExtensionContext) {
 		pugChannel.appendLine('Pug version file not found. Downloading latest version.');
 		downloadPugCommand();
 	}
-	context.subscriptions.push( disposable1, disposable2, disposable3);
+	context.subscriptions.push( disposable1, disposable2, disposable3, disposable4);
 	extensionContext = context; //TODO: remove this global variable 
 }
 
@@ -88,11 +88,10 @@ function createTerminal(language: string, filePath: string = ""): vscode.Termina
 	return terminal;
 }
 
-function runPrelude(pugLanguage: string){
+function runPugInTerminal(pugLanguage: string){
 	//checking if terminal already open for prelude.
 	var terminal = vscode.window.terminals.find(terminal => terminal.name === pugLanguage);
-	// Create a new terminal and run gofer
-	// const terminal = vscode.window.createTerminal('pug');
+	// Create a new terminal if no terminal found.
 	
 	if (!terminal) {
 		terminal = createTerminal(pugLanguage);
@@ -109,5 +108,3 @@ async function downloadPugCommand() {
 	void vscode.window.showInformationMessage(`Downloaded pug version: ${version}`);
 	pugChannel.appendLine(`Downloaded pug version: ${version}`);
 }
-
-//
